@@ -36,6 +36,7 @@ export default function countriesReducer(state = initialState, action) {
         ...state,
         countries: action.payload,
         isLoading: false,
+        error: null,
       };
     case "fetch/country":
       return {
