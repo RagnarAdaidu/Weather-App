@@ -15,7 +15,6 @@ export default function Hello() {
   console.log("waittttttt", keepText);
 
   const countryItem = countries.find((country) => country.id === Number(id));
-  // if (!countryItem) return;
 
   useEffect(
     function () {
@@ -34,6 +33,7 @@ export default function Hello() {
 
   const city = countryItem?.name;
   const description = countryItem?.weather.description || "";
+  console.log("hello there, how are u", description);
   const { country: country_initials } = countryItem?.sys;
 
   function handleSave(countryId, textArea) {

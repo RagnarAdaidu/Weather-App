@@ -6,7 +6,6 @@ const initialState = {
   country: {},
   favourite: [],
   isLoading: false,
-  error: null,
   keepText: [],
 };
 
@@ -36,6 +35,7 @@ export default function countriesReducer(state = initialState, action) {
         ...state,
         countries: action.payload,
         isLoading: false,
+        error: null,
       };
     case "fetch/country":
       return {
@@ -81,12 +81,12 @@ export default function countriesReducer(state = initialState, action) {
           (country) => country.id !== action.payload
         ),
       };
-    case "fetch/error":
-      return {
-        ...state,
-        error: action.payload,
-        isLoading: false,
-      };
+    // case "fetch/error":
+    //   return {
+    //     ...state,
+    //     error: action.payload,
+    //     isLoading: false,
+    //   };
     default:
       return state;
   }
@@ -117,7 +117,7 @@ export function countries() {
       localStorage.setItem("countriess", JSON.stringify(result));
     } catch (error) {
       console.log(error);
-      dispatch({ type: "fetch/error", payload: error.message });
+      // dispatch({ type: "fetch/error", payload: error.message });
     }
   };
 }
@@ -135,7 +135,7 @@ export function singleCountry(lat, lon) {
     } catch (error) {
       if (error) {
         console.log(error.message);
-        dispatch({ type: "fetch/error", payload: error.message });
+        // dispatch({ type: "fetch/error", payload: error.message });
       }
     }
   };
